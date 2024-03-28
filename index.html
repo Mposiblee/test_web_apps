@@ -1,20 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
-<title>Default Youtube Page</title>
-<link rel="stylesheet" type="text/css" href="css/style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burger King Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .menu-item {
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #000;
+            display: inline-block;
+        }
+        .menu-item img {
+            width: 100px;
+            height: 100px;
+        }
+        .menu-item p {
+            margin: 5px 0;
+        }
+    </style>
 </head>
 <body>
-    <div id="wrapper">
-    	<div class="content">
-			<a href="https://www.youtube.com/shorts" class="content__btn">Youtube Schorts</a>
+    <h1>Burger King Menu</h1>
+    <div id="menu">
+        <!-- Example of a menu item -->
+        <div class="menu-item">
+            <img src="whopper.jpg" alt="Whopper">
+            <p>Whopper</p>
+            <button onclick="orderItem('Whopper')">Order</button>
         </div>
+        <!-- Add more items here -->
     </div>
+    <script>
+        function orderItem(itemName) {
+            // Example of sending an order to the Telegram bot
+            // This needs to be customized based on how your bot is set up to receive orders
+            alert(`Order for ${itemName} has been sent to the bot!`);
+            // Here, you would actually send data to your bot using a method appropriate for your setup
+        }
+    </script>
 </body>
 </html>
