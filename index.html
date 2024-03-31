@@ -4,50 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Магазин</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <script>
-        // Добавим скрипт для обработки изменения темы Telegram
-        document.addEventListener('DOMContentLoaded', function() {
-            if (window.Telegram.WebApp) {
-                // Устанавливаем начальную тему
-                updateTheme(window.Telegram.WebApp.themeParams);
-
-                // Обновляем тему при её изменении
-                window.Telegram.WebApp.onEvent('themeChanged', updateTheme);
-            }
-
-            function updateTheme(themeParams) {
-                if (!themeParams) return;
-
-                // Обновляем переменные CSS в зависимости от темы
-                document.documentElement.style.setProperty('--tg-theme-bg-color', themeParams.bg_color);
-                document.documentElement.style.setProperty('--tg-theme-text-color', themeParams.text_color);
-                document.documentElement.style.setProperty('--tg-theme-header-bg-color', themeParams.header_bg_color);
-                document.documentElement.style.setProperty('--tg-theme-header-text-color', themeParams.header_text_color);
-                document.documentElement.style.setProperty('--tg-theme-button-color', themeParams.button_color);
-                document.documentElement.style.setProperty('--tg-theme-button-text-color', themeParams.button_text_color);
-                document.documentElement.style.setProperty('--tg-theme-button-active-color', themeParams.button_active_color || themeParams.button_color);
-            }
-        });
-    </script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="themeHandler.js"></script> <!-- Изменим путь к скриптам -->
 </head>
 <body>
     <header>
-        <!-- Вывод seller_name из первого элемента, если он есть -->
-        {% if items %}
-        <h1 id="seller-name">{{ items[0]['seller_name'] }}</h1> <!-- Исправлено на доступ к словарю -->
-        {% endif %}
+        <h1 id="seller-name">Имя продавца</h1>
     </header>
     <div class="container">
-        <!-- Проверка наличия элементов -->
-        {% if items %}
         <div class="product">
-            <!-- Цикл по всем элементам -->
-            {% for item in items %}
+            <!-- Пример статических данных о продукте -->
             <div class="product-item">
-                <img src="{{ url_for('image', filename=item['photo_path']) }}" alt="{{ item['item_name'] }}"> <!-- Исправлено на доступ к словарю -->
-                <h3>{{ item['item_name'] }}</h3> <!-- Исправлено на доступ к словарю -->
-                <!-- Контролы количества продукта -->
+                <img src="path_to_image.jpg" alt="Название товара">
+                <h3>Название товара</h3>
                 <div class="quantity-control">
                     <button class="quantity-minus" style="display:none">-</button>
                     <span class="quantity-count" style="display:none">1</span>
@@ -55,12 +24,9 @@
                 </div>
                 <button class="add-to-cart">Добавить в корзину</button>
             </div>
-            {% endfor %}
+            <!-- Добавьте дополнительные элементы продукта по аналогии, если необходимо -->
         </div>
-        {% else %}
-        <p>Товары не найдены.</p>
-        {% endif %}
     </div>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="script.js"></script>
 </body>
 </html>
